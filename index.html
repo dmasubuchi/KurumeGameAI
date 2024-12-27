@@ -1,0 +1,34 @@
+{
+    "routes": [
+        {
+            "route": "/",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/MazeGame1/*",
+            "serve": "/MazeGame1/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/myFruitGame1/*",
+            "serve": "/myFruitGame1/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/myFruitGame2/*",
+            "serve": "/myFruitGame2/index.html",
+            "statusCode": 200
+        }
+    ],
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/js/*"]
+    },
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/index.html",
+            "statusCode": 404
+        }
+    }
+}
