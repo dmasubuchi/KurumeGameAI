@@ -32,7 +32,7 @@ jobs:
           output_location: "/" # ビルド出力もルートに変更
           skip_app_build: true # 静的ファイルのみなのでビルド不要
           ###### End of Repository/Build Configurations ######
-
+　
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
