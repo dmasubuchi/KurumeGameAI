@@ -37,15 +37,15 @@
 
 ```mermaid
 flowchart TB
-    A([ゲーム開始 (start())]) --> B[初期化・リセット\nスコア=0, フルーツ削除 etc.]
-    B --> C[requestAnimationFrame\nで gameLoop() 呼び出し]
-    C --> D(gameLoop())
-    D --> E{制限時間超過？}
-    E -- YES --> F[ゲーム終了処理\n(end())]
+    A([ゲーム開始 - start]) --> B[初期化・リセット\nスコア=0, フルーツ削除 etc.]
+    B --> C[requestAnimationFrame\nで gameLoop 呼び出し]
+    C --> D[gameLoop]
+    D --> E{制限時間超過?}
+    E -- YES --> F[ゲーム終了処理 - end]
     F --> G([終了])
-    E -- NO --> H[フルーツ更新\n(落下・削除)]
-    H --> I[衝突判定\n(スコア加算・削除)]
-    I --> J{ゲーム継続中？}
+    E -- NO --> H[フルーツ更新\n落下・削除]
+    H --> I[衝突判定\nスコア加算・削除]
+    I --> J{ゲーム継続中?}
     J -- NO --> F
     J -- YES --> C
 ```
