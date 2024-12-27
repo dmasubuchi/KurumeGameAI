@@ -27,12 +27,12 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations ######
-          app_location: "/" # ルートディレクトリに変更
+          app_location: "/"      # ルートディレクトリに変更
           api_location: ""
-          output_location: "/" # ビルド出力もルートに変更
-          skip_app_build: true # 静的ファイルのみなのでビルド不要
+          output_location: "/"   # ビルド出力もルートに変更
+          skip_app_build: true   # 静的ファイルのみなのでビルド不要
           ###### End of Repository/Build Configurations ######
-　
+
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
