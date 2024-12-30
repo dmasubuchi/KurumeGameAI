@@ -1,64 +1,8 @@
 {
-    "routes": [
-      {
-        "route": "/myFruitGame1",
-        "serve": "myFruitGame1/index.html"
-      },
-      {
-        "route": "/myFruitGame1/*",
-        "serve": "myFruitGame1/*"
-      },
-  
-      {
-        "route": "/myFruitGame2",
-        "serve": "myFruitGame2/index.html"
-      },
-      {
-        "route": "/myFruitGame2/*",
-        "serve": "myFruitGame2/*"
-      },
-  
-      {
-        "route": "/keyinputOperation",
-        "serve": "keyinputOperation/index.html"
-      },
-      {
-        "route": "/keyinputOperation/*",
-        "serve": "keyinputOperation/*"
-      },
-  
-      {
-        "route": "/Phyx2DJump",
-        "serve": "Phyx2DJump/index.html"
-      },
-      {
-        "route": "/Phyx2DJump/*",
-        "serve": "Phyx2DJump/*"
-      },
-  
-      {
-        "route": "/JankenLogger",
-        "serve": "JankenLogger/index.html"
-      },
-      {
-        "route": "/JankenLogger/*",
-        "serve": "JankenLogger/*"
-      },
-  
-      {
-        "route": "/MazeGame10Maps",
-        "serve": "MazeGame10Maps/index.html"
-      },
-      {
-        "route": "/MazeGame10Maps/*",
-        "serve": "MazeGame10Maps/*"
-      }
-    ],
-    "navigationFallback": {
-      "rewrite": "index.html"
-    },
-    "globalHeaders": {
-      "content-security-policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;"
-    }
+  "navigationFallback": {
+    "rewrite": "index.html"
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;"
   }
-  
+}
