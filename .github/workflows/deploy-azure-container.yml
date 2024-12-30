@@ -1,0 +1,43 @@
+name: Build and Deploy to Azure Web App Container
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 1) Docker Login to Azure Container Registry (if using ACR)
+      - name: Login to ACR
+        run: |
+          echo "$REGISTRY_PASSWORD" | docker login $REGISTRY_LOGIN_SERVER -u $REGISTRY_USERNAME --password-stdin
+        env:
+          REGISTRY_LOGIN_SERVER: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+          REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+
+      # 2) Build Docker Image
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/myapp:${{ github.sha }} .
+
+      # 3) Push to ACR
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/myapp:${{ github.sha }}
+
+      # 4) Deploy to Azure Web App (Container)
+      - name: Azure WebApp Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "your-azure-webapp-name" # Azure上で作成したWeb App名
+          slot-name: "production" # 省略可
+          images: ${{ secrets.REGISTRY_LOGIN_SERVER }}/myapp:${{ github.sha }}
+          # もしACRでシークレットが必要ならもろもろ記載
+          # あるいは azure/webapps-deploy@v2 の container-registry-server, container-registry-username, container-registry-password を設定
