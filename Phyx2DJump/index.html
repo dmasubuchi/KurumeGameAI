@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>2D Physics Jump with Bouncing</title>
+  <title>2D Physics Random Map + Explanation</title>
   <style>
     body {
       margin: 0;
@@ -13,6 +13,9 @@
       align-items: center;
       min-height: 100vh;
       font-family: sans-serif;
+    }
+    #controls {
+      margin: 10px;
     }
     #game-canvas {
       background: #ddd;
@@ -31,14 +34,21 @@
 </head>
 <body>
 
+  <!-- リロードボタン (マップ再生成) -->
+  <div id="controls">
+    <button id="reload-btn">リロード(マップ再生成)</button>
+  </div>
+
+  <!-- ゲームCanvas -->
   <canvas id="game-canvas" width="800" height="500"></canvas>
 
+  <!-- 説明文を外部ファイルから読んで挿入する領域 -->
   <div class="info-section" id="info-section">
-    <!-- ここに外部ファイル explanation.html の内容を読み込む -->
+    <!-- explanation.html の内容をfetchで読み込み -->
   </div>
 
   <script>
-    // 外部の explanation.html を fetch して info-section に挿入
+    // 外部ファイル explanation.html を読み込み、info-section に挿入
     window.addEventListener("load", () => {
       fetch("explanation.html")
         .then(response => {
